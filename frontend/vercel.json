@@ -1,0 +1,4 @@
+{
+  "buildCommand": "rm -rf node_modules pnpm-lock.yaml && pnpm install --no-frozen-lockfile && pnpm run build",
+  "installCommand": "pnpm install --no-frozen-lockfile"
+}
