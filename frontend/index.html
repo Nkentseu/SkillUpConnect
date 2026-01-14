@@ -1,0 +1,140 @@
+
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Skill Up Connect | Excellence Numérique Cameroun 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                primary: '#0052CC',
+                secondary: '#FF8A00',
+                success: '#36B37E',
+                surface: '#F4F5F7',
+                dark: '#172B4D'
+              }
+            },
+            animation: {
+              'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'float': 'float 6s ease-in-out infinite',
+            },
+            keyframes: {
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-20px)' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #F8F9FC;
+        color: #172B4D;
+        overflow-x: hidden;
+      }
+      .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+      .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+      .custom-scrollbar::-webkit-scrollbar-thumb { background: #DFE1E6; border-radius: 10px; }
+      
+      .glass-card {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+      }
+
+      .animate-fade-in { animation: fadeIn 0.6s ease-out forwards; }
+      .animate-slide-up { animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+      
+      @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+      @keyframes slideUp { 
+        from { opacity: 0; transform: translateY(30px); } 
+        to { opacity: 1; transform: translateY(0); } 
+      }
+
+      /* Splash Screen Styles */
+      #splash-screen {
+        position: fixed;
+        inset: 0;
+        background: #172B4D;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        transition: opacity 0.5s ease, visibility 0.5s;
+      }
+      #splash-screen.hidden {
+        opacity: 0;
+        visibility: hidden;
+      }
+      .loader-bar {
+        width: 200px;
+        height: 4px;
+        background: rgba(255,255,255,0.1);
+        border-radius: 10px;
+        overflow: hidden;
+        margin-top: 20px;
+      }
+      .loader-progress {
+        width: 0%;
+        height: 100%;
+        background: #0052CC;
+        animation: progress 2s ease-in-out infinite;
+      }
+      @keyframes progress {
+        0% { width: 0%; }
+        50% { width: 70%; }
+        100% { width: 100%; }
+      }
+    </style>
+    <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@18.3.1",
+    "react-dom": "https://esm.sh/react-dom@18.3.1",
+    "react-dom/client": "https://esm.sh/react-dom@18.3.1/client",
+    "lucide-react": "https://esm.sh/lucide-react@0.460.0?external=react",
+    "recharts": "https://esm.sh/recharts@2.13.3?external=react",
+    "@google/genai": "https://esm.sh/@google/genai@0.2.1",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/"
+  }
+}
+</script>
+  <link rel="stylesheet" href="/index.css">
+</head>
+  <body class="dark:bg-brand-dark">
+    <!-- Splash Screen -->
+    <div id="splash-screen">
+      <div class="w-20 h-20 bg-brand-primary rounded-3xl flex items-center justify-center text-white text-4xl font-black shadow-2xl animate-bounce">S</div>
+      <h1 class="text-white mt-8 font-extrabold text-xl tracking-tighter">SkillUp Connect 2026</h1>
+      <div class="loader-bar">
+        <div class="loader-progress"></div>
+      </div>
+    </div>
+
+    <div id="root"></div>
+    <script type="module" src="./index.tsx"></script>
+    <script>
+      // Hide splash screen after app load
+      window.addEventListener('load', () => {
+        setTimeout(() => {
+          document.getElementById('splash-screen').classList.add('hidden');
+        }, 1500);
+      });
+    </script>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
