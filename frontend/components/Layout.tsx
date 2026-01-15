@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useApp } from '../App';
 import { 
   LayoutDashboard, Users, Award, TrendingUp, CreditCard, Bell, 
-  LogOut, Menu, X, User as UserIcon, BookOpen, Sun, Moon 
+  LogOut, Menu, X, User as UserIcon, BookOpen, Sun, Moon, Languages, Sparkles 
 } from 'lucide-react';
 
 interface LayoutProps {
@@ -11,17 +11,28 @@ interface LayoutProps {
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
-  const { user, setUser, theme, setTheme, activeTab, setActiveTab } = useApp();
+  const { user, setUser, theme, setTheme, activeTab, setActiveTab, lang, setLang, t } = useApp();
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const menuItems = [
-    { icon: LayoutDashboard, label: 'Tableau de bord', id: 'home' },
-    { icon: BookOpen, label: 'Mes Cours', id: 'courses' },
-    { icon: Users, label: 'Mentorat IA', id: 'mentorship' },
-    { icon: Award, label: 'Certifications', id: 'certifications' },
-    { icon: TrendingUp, label: 'Opportunités', id: 'opportunities' },
-    { icon: CreditCard, label: 'Facturation', id: 'billing' },
+    { icon: LayoutDashboard, label: t('dashboard'), id: 'home' },
+    { icon: BookOpen, label: t('myCourses'), id: 'courses' },
+    { icon: Users, label: t('mentorship'), id: 'mentorship' },
+    { icon: Award, label: t('certification'), id: 'certifications' },
+    { icon: TrendingUp, label: t('funding'), id: 'opportunities' },
+    { icon: CreditCard, label: t('billing'), id: 'billing' },
   ];
+
+  const Logo = () => (
+    <div className="flex items-center gap-2">
+      <img 
+        src="logo.png" 
+        alt="SkillUp Connect" 
+        className="h-10 w-auto" 
+        style={{ pointerEvents: 'none', userSelect: 'none' }}
+      />
+    </div>
+  );
 
   return (
     <div className="flex h-screen overflow-hidden bg-brand-surface dark:bg-brand-dark">
@@ -37,9 +48,8 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         ${sidebarOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}
       `}>
         <div className="flex flex-col h-full">
-          <div className="h-24 px-8 flex items-center gap-3">
-            <div className="w-10 h-10 bg-brand-primary rounded-xl flex items-center justify-center text-white font-bold text-xl">S</div>
-            <span className="font-extrabold text-xl tracking-tight text-brand-dark dark:text-white">SkillUp</span>
+          <div className="h-24 px-8 flex items-center">
+            <Logo />
           </div>
 
           <nav className="flex-1 px-4 py-2 space-y-1 overflow-y-auto custom-scrollbar">
@@ -65,7 +75,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               className="w-full flex items-center gap-4 px-4 py-3 rounded-2xl font-bold text-sm text-red-500 hover:bg-red-50 transition-colors"
             >
               <LogOut size={20} />
-              <span>Se déconnecter</span>
+              <span>{t('logout')}</span>
             </button>
           </div>
         </div>
@@ -78,10 +88,17 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           </button>
           
           <h2 className="hidden md:block font-bold text-brand-dark dark:text-white text-lg">
-            Bonjour, {user?.fullName.split(' ')[0]}
+            {lang === 'en' ? 'Welcome,' : 'Bonjour,'} {user?.fullName.split(' ')[0]}
           </h2>
 
           <div className="flex items-center gap-3">
+            <button 
+               onClick={() => setLang(lang === 'en' ? 'fr' : 'en')}
+               className="flex items-center gap-2 px-3 py-1.5 bg-gray-50 dark:bg-white/5 rounded-lg text-[10px] font-black uppercase tracking-widest border border-gray-100 dark:border-white/5"
+            >
+               <Languages size={14} className="text-brand-primary" />
+               {lang.toUpperCase()}
+            </button>
             <button onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')} className="p-2.5 rounded-xl border border-gray-100 hover:bg-gray-50 dark:border-white/5">
               {theme === 'light' ? <Moon size={20}/> : <Sun size={20}/>}
             </button>

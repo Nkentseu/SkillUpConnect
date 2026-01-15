@@ -39,7 +39,7 @@ const App: React.FC = () => {
   const [user, setUser] = useState<User | null>(null);
   const [showAuth, setShowAuth] = useState(false);
   const [authMode, setAuthMode] = useState<'login' | 'signup'>('signup');
-  const [lang, setLang] = useState<Language>('fr');
+  const [lang, setLang] = useState<Language>('en'); // Default to English
   const [theme, setTheme] = useState<Theme>('light');
   const [activeTab, setActiveTab] = useState('home');
 
@@ -51,7 +51,7 @@ const App: React.FC = () => {
     }
   }, []);
 
-  const t = (key: string) => translations[key]?.[lang] || key;
+  const t = (key: string) => translations[key]?.[lang] || translations[key]?.['en'] || key;
 
   const handleSetUser = (u: User | null) => {
     if (u) {
@@ -96,14 +96,20 @@ const App: React.FC = () => {
                onClick={() => setShowAuth(false)}
                className="fixed top-10 left-10 z-[120] px-6 py-3 bg-white/10 backdrop-blur-md rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] text-white hover:bg-white hover:text-brand-dark transition-all border border-white/10"
              >
-               ← Retour
+               {lang === 'en' ? '← Back' : '← Retour'}
              </button>
              <Auth />
           </div>
         </AppContext.Provider>
       );
     }
-    return <Landing onStart={handleStart} />;
+    return (
+      <AppContext.Provider value={{ 
+        user, setUser: handleSetUser, lang, setLang, theme, setTheme, t, activeTab, setActiveTab, authMode, setAuthMode
+      }}>
+        <Landing onStart={handleStart} />
+      </AppContext.Provider>
+    );
   }
 
   return (
