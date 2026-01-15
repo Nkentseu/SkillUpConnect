@@ -4,7 +4,8 @@ import { useApp } from '../App';
 import { 
   Rocket, BookOpen, Users, Award, TrendingUp, 
   ArrowRight, ShieldCheck, Zap, Globe, Sparkles,
-  ChevronRight, Mail, Phone, Instagram, Facebook, Twitter, Check, Languages
+  ChevronRight, Mail, Phone, Instagram, Facebook, Twitter, Check, Languages,
+  MapPin, Clock, Send, Heart, Target, Lightbulb
 } from 'lucide-react';
 
 interface LandingProps {
@@ -13,13 +14,14 @@ interface LandingProps {
 
 const Landing: React.FC<LandingProps> = ({ onStart }) => {
   const { t, lang, setLang } = useApp();
-  const [activePage, setActivePage] = useState<'home' | 'services' | 'pricing' | 'about'>('home');
+  const [activePage, setActivePage] = useState<'home' | 'services' | 'pricing' | 'about' | 'contact'>('home');
 
   const navLinks = [
     { id: 'home', label: t('home') },
     { id: 'services', label: t('services') },
     { id: 'pricing', label: t('pricing') },
     { id: 'about', label: t('about') },
+    { id: 'contact', label: t('contact') },
   ];
 
   const Logo = ({ className = "h-12 w-auto" }: { className?: string }) => {
@@ -157,6 +159,135 @@ const Landing: React.FC<LandingProps> = ({ onStart }) => {
     </div>
   );
 
+  const renderAbout = () => (
+    <div className="animate-slide-up pt-40 pb-20">
+      <section className="px-6 max-w-6xl mx-auto mb-32">
+        <div className="text-center mb-20">
+          <h2 className="text-6xl font-black tracking-tighter mb-6 uppercase">{t('aboutTitle')}</h2>
+          <p className="text-gray-500 font-medium text-xl">{t('aboutSubtitle')}</p>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
+          <div className="space-y-12">
+            <div className="flex gap-6">
+              <div className="w-16 h-16 bg-brand-primary/10 text-brand-primary rounded-2xl flex items-center justify-center shrink-0">
+                <Target size={32} />
+              </div>
+              <div>
+                <h3 className="text-2xl font-black mb-4 uppercase tracking-tighter">{t('aboutMissionTitle')}</h3>
+                <p className="text-gray-500 font-medium leading-relaxed">{t('aboutMissionText')}</p>
+              </div>
+            </div>
+            <div className="flex gap-6">
+              <div className="w-16 h-16 bg-brand-secondary/10 text-brand-secondary rounded-2xl flex items-center justify-center shrink-0">
+                <Lightbulb size={32} />
+              </div>
+              <div>
+                <h3 className="text-2xl font-black mb-4 uppercase tracking-tighter">{t('aboutVisionTitle')}</h3>
+                <p className="text-gray-500 font-medium leading-relaxed">{t('aboutVisionText')}</p>
+              </div>
+            </div>
+          </div>
+          <div className="relative">
+            <div className="absolute inset-0 bg-brand-primary/20 blur-[100px] rounded-full"></div>
+            <img 
+              src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80" 
+              alt="Team working" 
+              className="relative rounded-[4rem] shadow-3xl grayscale hover:grayscale-0 transition-all duration-700"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-brand-surface/30 py-24 px-6">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
+          {[
+            { icon: Award, title: t('aboutValue1'), desc: t('aboutValue1Desc') },
+            { icon: Zap, title: t('aboutValue2'), desc: t('aboutValue2Desc') },
+            { icon: Heart, title: t('aboutValue3'), desc: t('aboutValue3Desc') }
+          ].map((v, i) => (
+            <div key={i} className="bg-white p-12 rounded-[3.5rem] shadow-sm text-center">
+              <div className="w-20 h-20 bg-gray-50 text-brand-primary rounded-3xl flex items-center justify-center mx-auto mb-8">
+                <v.icon size={36} />
+              </div>
+              <h4 className="text-2xl font-black mb-4 uppercase tracking-tighter">{v.title}</h4>
+              <p className="text-gray-500 font-medium text-sm leading-relaxed">{v.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+    </div>
+  );
+
+  const renderContact = () => (
+    <div className="animate-slide-up pt-40 pb-20 px-6">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20">
+        <div>
+          <h2 className="text-6xl font-black tracking-tighter mb-8 uppercase">{t('contactTitle')}</h2>
+          <p className="text-gray-500 font-medium text-xl mb-16 leading-relaxed">
+            {t('contactSubtitle')}
+          </p>
+          
+          <div className="space-y-12">
+            <div className="flex gap-6">
+              <div className="w-14 h-14 bg-brand-primary/10 text-brand-primary rounded-2xl flex items-center justify-center shrink-0">
+                <MapPin size={24} />
+              </div>
+              <div>
+                <h4 className="font-black uppercase tracking-widest text-[10px] text-gray-400 mb-2">{t('contactInfoLocation')}</h4>
+                <p className="text-lg font-bold text-brand-dark">Ndokoti, China Mall Ndokoti, Douala</p>
+              </div>
+            </div>
+            <div className="flex gap-6">
+              <div className="w-14 h-14 bg-brand-secondary/10 text-brand-secondary rounded-2xl flex items-center justify-center shrink-0">
+                <Phone size={24} />
+              </div>
+              <div>
+                <h4 className="font-black uppercase tracking-widest text-[10px] text-gray-400 mb-2">WhatsApp / Tel</h4>
+                <p className="text-lg font-bold text-brand-dark">+237 6 55 99 38 76</p>
+              </div>
+            </div>
+            <div className="flex gap-6">
+              <div className="w-14 h-14 bg-brand-success/10 text-brand-success rounded-2xl flex items-center justify-center shrink-0">
+                <Clock size={24} />
+              </div>
+              <div>
+                <h4 className="font-black uppercase tracking-widest text-[10px] text-gray-400 mb-2">{t('contactInfoHours')}</h4>
+                <p className="text-lg font-bold text-brand-dark">{t('contactHoursDetail')}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-white dark:bg-brand-dark p-12 md:p-16 rounded-[4rem] border border-gray-100 dark:border-white/5 shadow-3xl">
+          <form className="space-y-8" onSubmit={(e) => e.preventDefault()}>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="space-y-3">
+                <label className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] ml-4">{t('contactFormName')}</label>
+                <input required className="w-full px-8 py-5 rounded-2xl border-2 border-gray-100 dark:border-white/10 outline-none focus:border-brand-primary bg-gray-50/50 dark:bg-transparent font-bold" />
+              </div>
+              <div className="space-y-3">
+                <label className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] ml-4">{t('contactFormEmail')}</label>
+                <input required type="email" className="w-full px-8 py-5 rounded-2xl border-2 border-gray-100 dark:border-white/10 outline-none focus:border-brand-primary bg-gray-50/50 dark:bg-transparent font-bold" />
+              </div>
+            </div>
+            <div className="space-y-3">
+              <label className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] ml-4">{t('contactFormSubject')}</label>
+              <input required className="w-full px-8 py-5 rounded-2xl border-2 border-gray-100 dark:border-white/10 outline-none focus:border-brand-primary bg-gray-50/50 dark:bg-transparent font-bold" />
+            </div>
+            <div className="space-y-3">
+              <label className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] ml-4">{t('contactFormMessage')}</label>
+              <textarea rows={5} required className="w-full px-8 py-5 rounded-2xl border-2 border-gray-100 dark:border-white/10 outline-none focus:border-brand-primary bg-gray-50/50 dark:bg-transparent font-medium resize-none" />
+            </div>
+            <button className="w-full py-6 bg-brand-primary text-white rounded-[2rem] font-black uppercase tracking-widest text-xs flex items-center justify-center gap-4 shadow-2xl shadow-brand-primary/30 hover:bg-brand-dark transition-all">
+              {t('contactFormBtn')} <Send size={20} />
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  );
+
   return (
     <div className="min-h-screen flex flex-col bg-white dark:bg-brand-dark transition-colors duration-500">
       {/* Navigation */}
@@ -170,7 +301,7 @@ const Landing: React.FC<LandingProps> = ({ onStart }) => {
             {navLinks.map(link => (
               <button 
                 key={link.id} 
-                onClick={() => setActivePage(link.id as any)}
+                onClick={() => { setActivePage(link.id as any); window.scrollTo({top:0, behavior:'smooth'}); }}
                 className={`text-[10px] font-black uppercase tracking-[0.25em] transition-all hover:text-brand-primary relative ${activePage === link.id ? 'text-brand-primary' : 'text-gray-400'}`}
               >
                 {link.label}
@@ -197,7 +328,8 @@ const Landing: React.FC<LandingProps> = ({ onStart }) => {
         {activePage === 'home' && renderHome()}
         {activePage === 'services' && renderServices()}
         {activePage === 'pricing' && renderPricing()}
-        {activePage === 'about' && <div className="animate-slide-up pt-40 px-6 pb-20 text-center"><h2 className="text-4xl font-black">{t('slogan')}</h2></div>}
+        {activePage === 'about' && renderAbout()}
+        {activePage === 'contact' && renderContact()}
       </main>
 
       {/* COMPACT FOOTER */}
@@ -227,11 +359,11 @@ const Landing: React.FC<LandingProps> = ({ onStart }) => {
           </div>
 
           <div className="space-y-4">
-            <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400">{t('footerContact')}</h4>
+            <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400">{t('contact')}</h4>
             <div className="space-y-2">
               <p className="flex items-center gap-2 text-gray-600 dark:text-gray-400 font-bold text-xs"><Mail size={14} className="text-brand-primary"/> raissadjedo94@gmail.com</p>
               <p className="flex items-center gap-2 text-gray-600 dark:text-gray-400 font-bold text-xs"><Phone size={14} className="text-brand-primary"/> +237 6 55 99 38 76</p>
-              <p className="text-[10px] text-gray-400 font-black uppercase tracking-widest">Yaoundé, Cameroon</p>
+              <p className="text-[10px] text-gray-400 font-black uppercase tracking-widest">Douala, Cameroon</p>
             </div>
           </div>
         </div>

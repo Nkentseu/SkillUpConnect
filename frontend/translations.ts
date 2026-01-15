@@ -7,6 +7,7 @@ export const translations: Translation = {
   services: { en: "Services", fr: "Services" },
   pricing: { en: "Pricing", fr: "Tarifs" },
   about: { en: "About", fr: "À Propos" },
+  contact: { en: "Contact", fr: "Contact" },
   login: { en: "Login", fr: "Connexion" },
   signup: { en: "Join Now", fr: "Rejoindre" },
   logout: { en: "Logout", fr: "Déconnexion" },
@@ -24,6 +25,32 @@ export const translations: Translation = {
   statCerts: { en: "State Certified", fr: "Certifiés État" },
   statGrants: { en: "Available Grants", fr: "Bourses Disponibles" },
   statJobRate: { en: "Employment Rate", fr: "Taux d'Emploi" },
+
+  // About Section Detailed
+  aboutTitle: { en: "Our Vision for 2026", fr: "Notre Vision pour 2026" },
+  aboutSubtitle: { en: "Empowering the next generation of Cameroonian leaders.", fr: "Propulser la prochaine génération de leaders camerounais." },
+  aboutMissionTitle: { en: "Our Mission", fr: "Notre Mission" },
+  aboutMissionText: { en: "To bridge the gap between youth potential and professional opportunities through high-level digital training and strategic mentorship.", fr: "Combler le fossé entre le potentiel des jeunes et les opportunités professionnelles grâce à une formation digitale de haut niveau et un mentorat stratégique." },
+  aboutVisionTitle: { en: "Our Vision", fr: "Notre Vision" },
+  aboutVisionText: { en: "To become the leading digital gateway for professional excellence in Central Africa, aligned with the UN Sustainable Development Goals.", fr: "Devenir la principale passerelle numérique vers l'excellence professionnelle en Afrique Centrale, en phase avec les Objectifs de Développement Durable de l'ONU." },
+  aboutValue1: { en: "Excellence", fr: "Excellence" },
+  aboutValue1Desc: { en: "We aim for the highest international standards in everything we provide.", fr: "Nous visons les standards internationaux les plus élevés dans tout ce que nous offrons." },
+  aboutValue2: { en: "Innovation", fr: "Innovation" },
+  aboutValue2Desc: { en: "Using AI and modern tools to solve local economic challenges.", fr: "Utiliser l'IA et les outils modernes pour résoudre les défis économiques locaux." },
+  aboutValue3: { en: "Community", fr: "Communauté" },
+  aboutValue3Desc: { en: "Building a powerful network of mutual support and shared success.", fr: "Bâtir un réseau puissant de soutien mutuel et de succès partagé." },
+
+  // Contact Page
+  contactTitle: { en: "Get in Touch", fr: "Contactez-nous" },
+  contactSubtitle: { en: "Our team is here to support your journey towards excellence.", fr: "Notre équipe est là pour accompagner votre parcours vers l'excellence." },
+  contactFormName: { en: "Full Name", fr: "Nom Complet" },
+  contactFormEmail: { en: "Email Address", fr: "Adresse Email" },
+  contactFormSubject: { en: "Subject", fr: "Sujet" },
+  contactFormMessage: { en: "Your Message", fr: "Votre Message" },
+  contactFormBtn: { en: "Send Message", fr: "Envoyer le message" },
+  contactInfoLocation: { en: "Our Headquarters", fr: "Notre Siège" },
+  contactInfoHours: { en: "Opening Hours", fr: "Heures d'ouverture" },
+  contactHoursDetail: { en: "Mon - Fri: 8:00 AM - 5:00 PM", fr: "Lun - Ven: 08:00 - 17:00" },
 
   // Services
   servicesTitle: { en: "A Success Ecosystem 2026", fr: "Écosystème de Succès 2026" },
