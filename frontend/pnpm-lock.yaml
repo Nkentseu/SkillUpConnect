@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@google/genai':
-        specifier: 1.35.0
-        version: 1.35.0
+        specifier: 1.36.0
+        version: 1.36.0
       lucide-react:
         specifier: 0.460.0
         version: 0.460.0(react@18.3.1)
@@ -291,7 +291,7 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@google/genai@1.35.0':
+  '@google/genai@1.36.0':
     resolution: {integrity: sha512-ZC1d0PSM5eS73BpbVIgL3ZsmXeMKLVJurxzww1Z9axy3B2eUB3ioEytbQt4Qu0Od6qPluKrTDew9pSi9kEuPaw==}
     engines: {node: '>=20.0.0'}
     peerDependencies:
