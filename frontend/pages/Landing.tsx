@@ -25,7 +25,7 @@ const Landing: React.FC<LandingProps> = ({ onStart }) => {
   const Logo = ({ className = "h-12 w-auto" }: { className?: string }) => {
     return (
       <img 
-        src="logo.png" 
+        src="/images/logo.png" 
         alt="SkillUp Connect" 
         className={className} 
         style={{ pointerEvents: 'none', userSelect: 'none' }}

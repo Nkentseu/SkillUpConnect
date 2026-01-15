@@ -26,7 +26,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   const Logo = () => (
     <div className="flex items-center gap-2">
       <img 
-        src="logo.png" 
+        src="/images/logo.png" 
         alt="SkillUp Connect" 
         className="h-10 w-auto" 
         style={{ pointerEvents: 'none', userSelect: 'none' }}
